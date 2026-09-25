@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ガチャ一覧 | TOP</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="public/app.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- ローディング -->
+<div id="loader">
+  <span class="label">LOADING</span>
+  <span class="count"><em id="loadNum" style="font-style:normal;">000</em><i>%</i></span>
+  <span class="bar"><span id="loadBar"></span></span>
+</div>
+
+<div class="page-bg" aria-hidden="true">
+  <img class="bg-main" src="public/img/img01.jpg" alt="">
+  <img class="bg-sub" src="public/img/img01.jpg" alt="">
+</div>
+
+<header class="site-header">
+  <a href="/" class="logo">GACHA</a>
+  <nav>
+    <a href="#gacha">GACHA</a>
+    <a href="#howto">HOW TO PLAY</a>
+    <a href="#news">NEWS</a>
+    <a href="/login">LOGIN</a>
+  </nav>
+</header>
+
+<div id="index">
+
+  <!-- ファーストビュー -->
+  <section class="fv">
+    <div class="fv-media" aria-hidden="true"><img src="public/img/img02.jpg" alt=""></div>
+    <p class="fv-eyebrow">OFFICIAL ONLINE GACHA</p>
+    <h1><span class="en">TM NETWORK</span><span class="ja">ガチャ</span></h1>
+    <div class="tagline">Every draw begins with a light.</div>
+    <p class="sub">1回 ¥500 / 全国配送対応 / 24時間いつでも</p>
+    <a href="#lineup" class="fv-cta">ラインナップを見る</a>
+    <div class="scroll-cue">SCROLL</div>
+  </section>
+
+
+
+  <!-- バナースライダー（元HTMLの carousel） -->
+  <section class="slider-sec">
+    <div id="carouselWithIndicators" class="carousel slide" data-bs-ride="carousel">
+      <ol class="carousel-indicators mb-0" style="list-style-type:none;">
+        <li data-bs-target="#carouselWithIndicators" data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#carouselWithIndicators" data-bs-slide-to="1"></li>
+        <li data-bs-target="#carouselWithIndicators" data-bs-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <a href="/root_box/1" style="display:block;"><img src="public/img/img01.jpg" alt=""></a>
+        </div>
+        <div class="carousel-item">
+          <a href="/root_box/2" style="display:block;"><img src="public/img/img02.jpg" alt=""></a>
+        </div>
+        <div class="carousel-item">
+          <a href="/root_box/3" style="display:block;"><img src="public/img/img03.jpg" alt=""></a>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselWithIndicators" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselWithIndicators" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ラインナップ -->
+  <section class="sec" id="lineup">
+    <span class="sec-label">LINEUP</span>
+    <h2 class="sec-head reveal">Prize Lineup</h2>
+    <p class="sec-lead reveal">1回 ¥500。A賞からE賞、そして1点限りのラストワン賞まで。当たった賞品はまとめて発送できます。</p>
+    <div class="lineup-grid reveal mt-4">
+      <a href="/root_box/1#prize-1" class="lineup-card">
+        <div class="lineup-card__thumb">
+          <span class="lineup-card__rank rank-a">A賞</span>
+          <img src="public/img/img02.jpg" alt="">
+        </div>
+        <div class="lineup-card__body">
+          <div class="lineup-card__name">アクリルスタンド 3種セット</div>
+          <div class="lineup-card__meta"><span>残り 12 / 30</span><b>¥500</b></div>
+        </div>
+      </a>
+      <a href="/root_box/1#prize-2" class="lineup-card">
+        <div class="lineup-card__thumb">
+          <span class="lineup-card__rank ">B賞</span>
+          <img src="public/img/img03.jpg" alt="">
+        </div>
+        <div class="lineup-card__body">
+          <div class="lineup-card__name">ツアーパンフレット 復刻版</div>
+          <div class="lineup-card__meta"><span>残り 45 / 80</span><b>¥500</b></div>
+        </div>
+      </a>
+      <a href="/root_box/1#prize-3" class="lineup-card">
+        <div class="lineup-card__thumb">
+          <span class="lineup-card__rank ">C賞</span>
+          <img src="public/img/img03.jpg" alt="">
+        </div>
+        <div class="lineup-card__body">
+          <div class="lineup-card__name">ステージフォト ブロマイド（全12種）</div>
+          <div class="lineup-card__meta"><span>残り 128 / 300</span><b>¥500</b></div>
+        </div>
+      </a>
+      <a href="/root_box/1#prize-4" class="lineup-card">
+        <div class="lineup-card__thumb">
+          <span class="lineup-card__rank ">D賞</span>
+          <img src="public/img/img03.jpg" alt="">
+        </div>
+        <div class="lineup-card__body">
+          <div class="lineup-card__name">ロゴTシャツ</div>
+          <div class="lineup-card__meta"><span>残り 62 / 150</span><b>¥500</b></div>
+        </div>
+      </a>
+      <a href="/root_box/1#prize-5" class="lineup-card">
+        <div class="lineup-card__thumb">
+          <span class="lineup-card__rank ">E賞</span>
+          <img src="public/img/img03.jpg" alt="">
+        </div>
+        <div class="lineup-card__body">
+          <div class="lineup-card__name">ステッカーセット</div>
+          <div class="lineup-card__meta"><span>残り 210 / 500</span><b>¥500</b></div>
+        </div>
+      </a>
+      <a href="/root_box/1#prize-6" class="lineup-card">
+        <div class="lineup-card__thumb">
+          <span class="lineup-card__rank rank-last">LAST ONE</span>
+          <img src="public/img/img02.jpg" alt="">
+        </div>
+        <div class="lineup-card__body">
+          <div class="lineup-card__name">直筆サイン入りポスター</div>
+          <div class="lineup-card__meta"><span>残り 1 / 1</span><b>¥500</b></div>
+        </div>
+      </a>
+    </div>
+    <div class="mt-4"><a href="/root_box/1" class="index-link">このガチャを引く</a></div>
+  </section>
+
+  <!-- UPDATES -->
+  <section class="sec">
+    <span class="sec-label">UPDATES</span>
+    <h2 class="sec-head reveal">TOPICS</h2>
+    <div class="updates reveal">
+      <a href="/info/1" class="update-card">
+        <span class="cat">NEW GACHA</span>
+        <div class="ttl">新ガチャ「星降る夜のコレクション」を公開しました</div>
+        <div class="date">2026.09.01</div>
+      </a>
+      <a href="/info/2" class="update-card">
+        <span class="cat">MAINTENANCE</span>
+        <div class="ttl">メンテナンス実施のお知らせ（8/25 2:00〜5:00）</div>
+        <div class="date">2026.08.20</div>
+      </a>
+      <a href="/info/3" class="update-card">
+        <span class="cat">SHIPPING</span>
+        <div class="ttl">配送に関する規約を改定しました</div>
+        <div class="date">2026.08.05</div>
+      </a>
+      <a href="/info/4" class="update-card">
+        <span class="cat">CAMPAIGN</span>
+        <div class="ttl">初回チャージ10%増量キャンペーンを開催中です</div>
+        <div class="date">2026.07.28</div>
+      </a>
+    </div>
+    <div class="mt-4"><a href="/info" class="index-link">Index</a></div>
+  </section>
+
+  <!-- ガチャ一覧 -->
+  <section class="sec" id="gacha">
+    <span class="sec-label">GACHA</span>
+    <h2 class="sec-head reveal">Draw Your Luck</h2>
+    <p class="sec-lead reveal">開催中のガチャと、これまでに登場したガチャの一覧です。1回から引けて、当たった賞品はまとめて発送できます。在庫は残り枚数で確認できます。</p>
+
+    <div class="gacha-tabs-wrap reveal">
+      <div class="nav-pills-custom" id="gachaTabs" role="tablist">
+        <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-active" type="button" role="tab">開催中</button>
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-all" type="button" role="tab">すべて</button>
+      </div>
+
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="tab-active" role="tabpanel">
+          <div class="row g-3">
+            <div class="col-6 col-md-4 col-lg-3">
+              <a href="/root_box/1" class="gacha-card">
+                <div class="gacha-card__thumb">
+                  <span class="gacha-card__badge">NOW</span>
+                  <img src="public/img/img03.jpg" alt="">
+                </div>
+                <div class="gacha-card__body">
+                  <div class="gacha-card__title">星降る夜のコレクション 第1弾</div>
+                  <div class="gacha-card__price">¥500 <span>/ 1回</span></div>
+                  <div class="gacha-card__stock">残り 128 / 300</div>
+                </div>
+              </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+              <a href="/root_box/2" class="gacha-card">
+                <div class="gacha-card__thumb">
+                  <span class="gacha-card__badge">NOW</span>
+                  <img src="public/img/img03.jpg" alt="">
+                </div>
+                <div class="gacha-card__body">
+                  <div class="gacha-card__title">ミッドナイトライブ記念ガチャ</div>
+                  <div class="gacha-card__price">¥800 <span>/ 1回</span></div>
+                  <div class="gacha-card__stock">残り 45 / 200</div>
+                </div>
+              </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+              <a href="/root_box/3" class="gacha-card">
+                <div class="gacha-card__thumb">
+                  <span class="gacha-card__badge">NOW</span>
+                  <img src="public/img/img03.jpg" alt="">
+                </div>
+                <div class="gacha-card__body">
+                  <div class="gacha-card__title">サマーフェス アクリルスタンドくじ</div>
+                  <div class="gacha-card__price">¥600 <span>/ 1回</span></div>
+                  <div class="gacha-card__stock">残り 210 / 500</div>
+                </div>
+              </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+              <a href="/root_box/4" class="gacha-card">
+                <div class="gacha-card__thumb">
+                  <span class="gacha-card__badge">NOW</span>
+                  <img src="public/img/img03.jpg" alt="">
+                </div>
+                <div class="gacha-card__body">
+                  <div class="gacha-card__title">はじめてのガチャ お試しBOX</div>
+                  <div class="gacha-card__price">¥300 <span>/ 1回</span></div>
+                  <div class="gacha-card__stock">残り 88 / 100</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="tab-all" role="tabpanel">
+          <div class="row g-3">
+            <div class="col-6 col-md-4 col-lg-3">
+              <a href="/root_box/1" class="gacha-card">
+                <div class="gacha-card__thumb">
+                  <span class="gacha-card__badge">NOW</span>
+                  <img src="public/img/img03.jpg" alt="">
+                </div>
+                <div class="gacha-card__body">
+                  <div class="gacha-card__title">星降る夜のコレクション 第1弾</div>
+                  <div class="gacha-card__price">¥500 <span>/ 1回</span></div>
+                  <div class="gacha-card__stock">残り 128 / 300</div>
+                </div>
+              </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+              <a href="/root_box/2" class="gacha-card">
+                <div class="gacha-card__thumb">
+                  <span class="gacha-card__badge">NOW</span>
+                  <img src="public/img/img03.jpg" alt="">
+                </div>
+                <div class="gacha-card__body">
+                  <div class="gacha-card__title">ミッドナイトライブ記念ガチャ</div>
+                  <div class="gacha-card__price">¥800 <span>/ 1回</span></div>
+                  <div class="gacha-card__stock">残り 45 / 200</div>
+                </div>
+              </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+              <a href="/root_box/5" class="gacha-card">
+                <div class="gacha-card__thumb">
+                  <span class="gacha-card__badge gacha-card__badge--end">END</span>
+                  <img src="public/img/img02.jpg" alt="">
+                </div>
+                <div class="gacha-card__body">
+                  <div class="gacha-card__title">春の新衣装お披露目ガチャ</div>
+                  <div class="gacha-card__price">¥500 <span>/ 1回</span></div>
+                  <div class="gacha-card__stock">完売</div>
+                </div>
+              </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+              <a href="/root_box/6" class="gacha-card">
+                <div class="gacha-card__thumb">
+                  <span class="gacha-card__badge gacha-card__badge--end">END</span>
+                  <img src="public/img/img03.jpg" alt="">
+                </div>
+                <div class="gacha-card__body">
+                  <div class="gacha-card__title">1周年アニバーサリーくじ</div>
+                  <div class="gacha-card__price">¥1,000 <span>/ 1回</span></div>
+                  <div class="gacha-card__stock">完売</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 遊び方 -->
+  <section class="sec" id="howto">
+    <span class="sec-label">HOW TO PLAY</span>
+    <h2 class="sec-head reveal">4 Steps</h2>
+    <div class="row g-4 mt-2 reveal">
+      <div class="col-6 col-md-3">
+        <div class="tutorial-step"><span class="step-no">01</span><p>会員登録して、ポイントをチャージします。</p></div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="tutorial-step"><span class="step-no">02</span><p>引きたいガチャを選びます。</p></div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="tutorial-step"><span class="step-no">03</span><p>回数を決めてガチャを回します。</p></div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="tutorial-step"><span class="step-no">04</span><p>当たった賞品の発送先を登録して受け取ります。</p></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 写真の帯 -->
+  <section class="photo-band">
+    <img src="public/img/img04.jpg" alt="">
+    <div class="copy">
+      <p class="en">One Night,<br>One Draw.</p>
+      <p>ライブ会場の物販でしか手に入らなかったアイテムを、オンラインのガチャで。抽選から発送まで、すべてこのサイトで完結します。</p>
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section class="sec" id="news">
+    <span class="sec-label">NEWS</span>
+    <h2 class="sec-head reveal">お知らせ</h2>
+    <div class="reveal">
+      <a href="/info/1" class="news-row">
+        <span class="date">2026.09.01</span>
+        <span class="cat">ガチャ</span>
+        <span class="ttl">新ガチャ「星降る夜のコレクション」を公開しました</span>
+      </a>
+      <a href="/info/2" class="news-row">
+        <span class="date">2026.08.20</span>
+        <span class="cat">メンテナンス</span>
+        <span class="ttl">メンテナンス実施のお知らせ（8/25 2:00〜5:00）</span>
+      </a>
+      <a href="/info/3" class="news-row">
+        <span class="date">2026.08.05</span>
+        <span class="cat">規約</span>
+        <span class="ttl">配送に関する規約を改定しました</span>
+      </a>
+    </div>
+    <div class="mt-4"><a href="/info" class="index-link">Index</a></div>
+  </section>
+
+  <!-- 締め -->
+  <section class="closing">
+    <div class="en reveal">Your Next Favorite<br>Is One Draw Away</div>
+    <p class="ja">会員登録は無料、1分で完了します</p>
+    <div class="actions">
+      <a href="/login" class="rd-btn-register">会員登録</a>
+      <a href="#gacha" class="rd-btn-ghost">ガチャを見る</a>
+    </div>
+  </section>
+
+  <footer class="d-flex justify-content-between align-items-center">
+    <small>&copy; GACHA INC.</small>
+    <small>PRIVACY / TERMS</small>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // ローディングのカウントアップ
+  (function(){
+    var n = 0, num = document.getElementById('loadNum'), bar = document.getElementById('loadBar'),
+        loader = document.getElementById('loader');
+    var t = setInterval(function(){
+      n += Math.random() * 9;
+      if (n >= 100) { n = 100; clearInterval(t); setTimeout(function(){ loader.classList.add('done'); }, 350); }
+      num.textContent = String(Math.floor(n)).padStart(3, '0');
+      bar.style.width = n + '%';
+    }, 60);
+  })();
+
+  // スクロールで出現
+  (function(){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  })();
+</script>
+</body>
+</html>
