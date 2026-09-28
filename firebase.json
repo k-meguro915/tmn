@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "tmcapsule-e9c79-cde99",
     "public": "./",
     "ignore": [
       "firebase.json",
