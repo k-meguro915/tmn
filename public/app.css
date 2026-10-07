@@ -56,7 +56,7 @@
       repeating-linear-gradient(to bottom, rgba(0,0,0,.25) 0 1px, transparent 1px 3px);
   }
 
-  #index{ position:relative; z-index:1; }
+  #index, #detail{ position:relative; z-index:1; }
 
   /* ── ヘッダー ───────────────────────────── */
   .site-header{
@@ -382,3 +382,57 @@
   #carouselWithIndicators .carousel-control-prev:hover,
   #carouselWithIndicators .carousel-control-next:hover{ opacity:1; }
   :focus-visible{ outline:2px solid #fff; outline-offset:3px; }
+
+  /* ── ガチャ詳細（root_box.html） ────────── */
+  .detail-hero{ padding:6rem clamp(1rem,5vw,4rem) clamp(3rem,8vw,5rem); }
+  .detail-back{
+    display:inline-block; margin-bottom:2rem;
+    font-family:"Chakra Petch",sans-serif; font-size:.72rem; letter-spacing:.3em;
+    color:var(--muted); text-decoration:none;
+  }
+  .detail-back::before{ content:"← "; }
+  .detail-back:hover{ color:#fff; }
+  .detail-hero__grid{
+    display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
+    gap:clamp(1.5rem,4vw,3.5rem); align-items:start;
+  }
+  @media (max-width:768px){ .detail-hero__grid{ grid-template-columns:1fr; } }
+  .detail-hero__media{
+    position:relative; aspect-ratio:4/3; overflow:hidden; background:#000; border:1px solid var(--line);
+  }
+  .detail-hero__media img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .detail-title{
+    font-size:clamp(1.5rem,3.6vw,2.4rem); font-weight:700; line-height:1.5; color:#fff;
+    letter-spacing:.04em; margin:0 0 1.2rem;
+  }
+  .detail-spec{ margin:1.8rem 0 0; border-top:1px solid var(--line); }
+  .detail-spec > div{
+    display:flex; justify-content:space-between; align-items:baseline; gap:1rem;
+    padding:.8rem 0; border-bottom:1px solid var(--line);
+  }
+  .detail-spec dt{
+    font-family:"Chakra Petch",sans-serif; font-weight:500; font-size:.68rem; letter-spacing:.3em; color:var(--muted);
+  }
+  .detail-spec dd{ margin:0; font-size:.85rem; color:var(--silver); text-align:right; }
+  .detail-spec dd b{ font-family:"Chakra Petch",sans-serif; font-size:1.5rem; font-weight:700; color:#fff; }
+  .detail-stockbar{ height:2px; background:var(--line); margin-top:-1px; }
+  .detail-stockbar span{ display:block; height:100%; width:0; background:var(--grad); transition:width .8s ease; }
+  .detail-actions{ margin-top:2rem; display:flex; flex-direction:column; gap:.8rem; }
+  .detail-actions > *{ min-width:0; width:100%; }
+  .detail-actions .is-disabled{ color:var(--muted); cursor:not-allowed; }
+  .detail-actions .is-disabled:hover{ border-color:var(--line); }
+  .detail-note{ margin-top:1rem; font-size:.75rem; color:var(--muted); }
+  .detail-empty{ min-height:70svh; display:flex; flex-direction:column; justify-content:center; }
+
+  .detail-prizes{
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1px;
+    background:var(--line); border:1px solid var(--line);
+  }
+  .detail-prize{ background:var(--panel); scroll-margin-top:5rem; transition:box-shadow .3s ease; }
+  .detail-prize .lineup-card__thumb img{ filter:none; }
+  .detail-prize .lineup-card__name{ margin:0; }
+  .detail-prize__desc{ margin:.6rem 0 0; font-size:.8rem; line-height:1.8; color:var(--muted); }
+  .detail-prize.is-target{ box-shadow:inset 0 0 0 1px var(--gold); }
+
+  .detail-notice{ margin:0; padding-left:1.2em; max-width:44em; }
+  .detail-notice li{ font-size:.85rem; line-height:2; color:var(--silver); font-weight:300; }

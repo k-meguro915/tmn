@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ガチャ詳細 | GACHA</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<!-- /root_box/{id} で表示するため、パスはすべてルートからの絶対パス -->
+<link href="/public/app.css" rel="stylesheet">
+<script type="module" src="/public/app.js"></script>
+<script src="/public/gacha-data.js"></script>
+</head>
+<body>
+
+<div class="page-bg" aria-hidden="true">
+  <img class="bg-main" src="/public/img/img01.jpg" alt="">
+  <img class="bg-sub" src="/public/img/img01.jpg" alt="">
+</div>
+
+<header class="site-header">
+  <a href="/" class="logo">GACHA</a>
+  <nav>
+    <a href="/#gacha">GACHA</a>
+    <a href="/#howto">HOW TO PLAY</a>
+    <a href="/#news">NEWS</a>
+    <a href="/login">LOGIN</a>
+  </nav>
+</header>
+
+<div id="detail">
+
+  <!-- ガチャ概要 -->
+  <section class="detail-hero">
+    <a href="/#gacha" class="detail-back">BACK TO LIST</a>
+    <div class="detail-hero__grid">
+      <div class="detail-hero__media">
+        <span class="gacha-card__badge" id="gBadge"></span>
+        <img id="gImage" src="" alt="">
+      </div>
+      <div class="detail-hero__info">
+        <p class="fv-eyebrow">GACHA No.<span id="gNo"></span></p>
+        <h1 class="detail-title" id="gTitle"></h1>
+        <p class="sec-lead" id="gLead"></p>
+        <dl class="detail-spec">
+          <div><dt>PRICE</dt><dd><b id="gPrice"></b> / 1回</dd></div>
+          <div><dt>STOCK</dt><dd id="gStock"></dd></div>
+          <div id="gPeriodRow"><dt>PERIOD</dt><dd id="gPeriod"></dd></div>
+        </dl>
+        <div class="detail-stockbar" aria-hidden="true"><span id="gStockBar"></span></div>
+        <div class="detail-actions" id="gActions">
+          <a href="/login" class="rd-btn-register">1回引く</a>
+          <a href="/login" class="rd-btn-ghost">10回引く</a>
+        </div>
+        <p class="detail-note" id="gNote">ガチャを引くにはログインとポイントのチャージが必要です。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ラインナップ -->
+  <section class="sec" id="lineup">
+    <span class="sec-label">LINEUP</span>
+    <h2 class="sec-head">Prize Lineup</h2>
+    <div class="detail-prizes" id="gPrizes"></div>
+  </section>
+
+  <!-- 注意事項 -->
+  <section class="sec">
+    <span class="sec-label">NOTICE</span>
+    <h2 class="sec-head">注意事項</h2>
+    <ul class="detail-notice">
+      <li>賞品は在庫がなくなり次第、販売終了となります。</li>
+      <li>当たった賞品は、マイページから発送先を登録するとまとめて発送できます。</li>
+      <li>デジタル賞品は、当選後すぐにマイページから閲覧できます。</li>
+      <li>ガチャの購入後のキャンセル・返金はできません。</li>
+    </ul>
+  </section>
+
+  <footer class="d-flex justify-content-between align-items-center">
+    <small>&copy; GACHA INC.</small>
+    <small>PRIVACY / TERMS</small>
+  </footer>
+</div>
+
+<script>
+  (function(){
+    var m = location.pathname.match(/\/root_box\/(\d+)/);
+    var id = m ? m[1] : null;
+    var g = id && window.GACHA_DATA[id];
+    var $ = function(s){ return document.getElementById(s); };
+
+    // 該当するガチャがない場合
+    if (!g) {
+      document.title = 'ガチャが見つかりません | GACHA';
+      $('detail').innerHTML =
+        '<section class="detail-hero detail-empty">' +
+        '<p class="fv-eyebrow">NOT FOUND</p>' +
+        '<h1 class="detail-title">ガチャが見つかりません</h1>' +
+        '<p class="sec-lead">URLが正しいかご確認ください。</p>' +
+        '<a href="/#gacha" class="index-link">BACK TO LIST</a></section>';
+      return;
+    }
+
+    var ended = g.status === 'end';
+    var yen = function(n){ return '¥' + n.toLocaleString('ja-JP'); };
+    var esc = function(s){
+      return String(s).replace(/[&<>"]/g, function(c){ return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]; });
+    };
+
+    document.title = g.title + ' | GACHA';
+    $('gNo').textContent = id;
+    $('gTitle').textContent = g.title;
+    $('gImage').src = g.image;
+    $('gBadge').textContent = ended ? 'END' : 'NOW';
+    if (ended) $('gBadge').classList.add('gacha-card__badge--end');
+    $('gLead').textContent = g.lead || '';
+    $('gPrice').textContent = yen(g.price);
+    $('gStock').textContent = ended ? '完売' : '残り ' + g.stock + ' / ' + g.total;
+    $('gStockBar').style.width = (g.total ? g.stock / g.total * 100 : 0) + '%';
+    if (g.period) $('gPeriod').textContent = g.period; else $('gPeriodRow').remove();
+
+    if (ended) {
+      $('gActions').innerHTML = '<span class="rd-btn-ghost is-disabled">販売終了</span>';
+      $('gNote').textContent = 'このガチャは販売を終了しました。';
+    }
+
+    // ラインナップ（/root_box/1#prize-1 のようにリンクされるので id を prize-{n} にする）
+    if (!g.prizes.length) {
+      $('gPrizes').innerHTML = '<p class="sec-lead">ラインナップは準備中です。</p>';
+    } else {
+      $('gPrizes').innerHTML = g.prizes.map(function(p, i){
+        var cls = p.rank ? ' rank-' + p.rank : '';
+        return '<article class="detail-prize" id="prize-' + (i + 1) + '">' +
+          '<div class="lineup-card__thumb"><span class="lineup-card__rank' + cls + '">' + esc(p.label) + '</span>' +
+          '<img src="' + esc(p.image) + '" alt=""></div>' +
+          '<div class="lineup-card__body">' +
+          '<h3 class="lineup-card__name">' + esc(p.name) + '</h3>' +
+          (p.desc ? '<p class="detail-prize__desc">' + esc(p.desc) + '</p>' : '') +
+          '<div class="lineup-card__meta"><span>残り ' + p.stock + ' / ' + p.total + '</span></div>' +
+          '</div></article>';
+      }).join('');
+    }
+
+    // 描画後にアンカー位置へスクロール
+    var target = location.hash && document.getElementById(location.hash.slice(1));
+    if (target) {
+      target.classList.add('is-target');
+      target.scrollIntoView();
+    }
+  })();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -12,6 +12,10 @@
     ],
     "rewrites": [
       {
+        "source": "/root_box/**",
+        "destination": "/root_box.html"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
